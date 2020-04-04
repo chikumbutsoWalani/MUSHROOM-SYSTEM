@@ -7,6 +7,9 @@ const port = process.env.PORT || 3000;
 
 var app = express();
 
+var date = new Date().getTime();
+date += (2 * 60 * 60 * 1000);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -97,7 +100,7 @@ app.post("/mushroomData", function(req, res) {
     temp1: req.body.tempSensor1,
     temp2: req.body.tempSensor2,
     temp3: req.body.tempSensor3,
-
+    date: date: new Date().toUTCString()
 
   })
   sensor.save()
