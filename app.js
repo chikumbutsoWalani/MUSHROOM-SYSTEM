@@ -20,7 +20,7 @@ app.use(express.static("public"));
 
 
 //coonnect to the database
-mongoose.connect("mongodb+srv://admin-walani:CHIKUMBUTSO12@cluster0-97kte.mongodb.net/sensorsDB",{useNewUrlParser: true,useUnifiedTopology: true})
+mongoose.connect("mongodb+srv://admin-walani:CHIKUMBUTSO12@cluster0-97kte.mongodb.net/sensorsDB",{ useNewUrlParser: true, useUnifiedTopology: true} )              //mongodb+srv://admin-walani:CHIKUMBUTSO12@cluster0-97kte.mongodb.net/sensorsDB
 
 //creating a schema for the database
 const sensorsSchema = mongoose.Schema({
@@ -32,13 +32,14 @@ const sensorsSchema = mongoose.Schema({
   temp1: Number,
   temp2: Number,
   temp3: Number
-  
+
 });
 
 
 
 //create a model
 const Sensor = mongoose.model("sensor", sensorsSchema)
+
 
 
 app.get("/", function(req, res) {
@@ -51,14 +52,14 @@ app.get("/values",function(req,res) {
 
   Sensor.findOne({},function(err,result){
     if(err) throw err;
-        console.log(result.temperature);
-          console.log(result.humidity);
+        console.log(result.temp1);
+          console.log(result.humid);
       res.render("values",{
-        temp: result.temperature,
-        humid: result.humidity,
-        moist1: result.moistureOne,
-        moist2: result.moistureTwo,
-        moist2: result.moistureThree,
+        temp: result.temp1,
+        humid: result.humid,
+        moist1: result.moist1,
+        moist2: result.moist2,
+        moist3: result.moist3,
         temp1: result.temp1,
         temp2: result.temp2,
         temp3: result.temp3
@@ -69,6 +70,20 @@ app.get("/values",function(req,res) {
 
 })
 
+app.get("/allData", function(req, res) {
+
+  Sensor.find({}, function(err, foundSensors) {
+    if (!err) {
+      res.render("table", {
+        sensors: foundSensors
+      })
+    } else {
+      res.send("Invalid creditials please try again")
+    }
+
+  })
+});
+
 app.post("/mushroomData", function(req, res) {
 
   console.log(req.body);
@@ -76,17 +91,16 @@ app.post("/mushroomData", function(req, res) {
   const sensor = new Sensor({
     temperature: req.body.temperature,
     humidity: req.body.humidity,
-    moistureOne: req.body.moistureOne,
-    moistureTwo: req.body.moistureTwo,
-    moistureThree: req.body.moistureThree,
+    moisture1: req.body.moistureOne,
+    moisture2: req.body.moistureTwo,
+    moisture3: req.body.moistureThree,
     temp1: req.body.tempSensor1,
-    temp2: req.body.tempsensor2,
+    temp2: req.body.tempSensor2,
     temp3: req.body.tempsensor3,
 
 
   })
   sensor.save()
-
 
 });
 
