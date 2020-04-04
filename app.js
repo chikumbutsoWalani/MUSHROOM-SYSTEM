@@ -24,10 +24,15 @@ mongoose.connect("mongodb+srv://admin-walani:CHIKUMBUTSO12@cluster0-97kte.mongod
 
 //creating a schema for the database
 const sensorsSchema = mongoose.Schema({
-  temperature: Number,
-  Humidity: Number
-
-
+  temp: Number,
+  humid: Number,
+  moist1: Number,
+  moist2: Number,
+  moist3: Number,
+  temp1: Number,
+  temp2: Number,
+  temp3: Number
+  
 });
 
 
@@ -51,9 +56,9 @@ app.get("/values",function(req,res) {
       res.render("values",{
         temp: result.temperature,
         humid: result.humidity,
-        moistOne: result.moistureOne,
-        moistTwo: result.moistureTwo,
-        moistThree: result.moistureThree,
+        moist1: result.moistureOne,
+        moist2: result.moistureTwo,
+        moist2: result.moistureThree,
         temp1: result.temp1,
         temp2: result.temp2,
         temp3: result.temp3
