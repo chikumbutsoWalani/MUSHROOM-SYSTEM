@@ -100,7 +100,7 @@ app.post("/mushroomData", function(req, res) {
     temp1: req.body.tempSensor1,
     temp2: req.body.tempSensor2,
     temp3: req.body.tempSensor3,
-    date: date: new Date().toUTCString()
+    date: new Date().toUTCString()
 
   })
   sensor.save()
