@@ -16,11 +16,11 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 
-mongoose.connect("mongodb://localhost:27017/sensorsDB",{useNewUrlParser: true,useUnifiedTopology: true})
+//mongoose.connect("mongodb://localhost:27017/sensorsDB",{useNewUrlParser: true,useUnifiedTopology: true})
 
 
 //coonnect to the database
-//mongoose.connect("mongodb+srv://admin-walani:CHIKUMBUTSO12@cluster0-97kte.mongodb.net/sensorsDB", { //              mongodb+srv://admin-walani:CHIKUMBUTSO12@cluster0-97kte.mongodb.net/sensorsDB
+mongoose.connect("mongodb+srv://admin-walani:CHIKUMBUTSO12@cluster0-97kte.mongodb.net/sensorsDB",{useNewUrlParser: true,useUnifiedTopology: true})
 
 //creating a schema for the database
 const sensorsSchema = mongoose.Schema({
