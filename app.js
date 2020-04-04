@@ -89,7 +89,7 @@ app.post("/mushroomData", function(req, res) {
   console.log(req.body);
   //calculating current tim
   const sensor = new Sensor({
-    temp req.body.temperature,
+    temp :req.body.temperature,
     humid: req.body.humidity,
     moist1: req.body.moistureOne,
     moist2: req.body.moistureTwo,
