@@ -12,7 +12,7 @@
   <div class="table-responsive">
     <table class="table table-striped table-dark">
       <thead>
-
+           <th scope="col">Date</th>
           <th scope="col">Temp</th>
           <th scope="col">Humid</th>
           <th scope="col">moist1</th>
@@ -26,7 +26,7 @@
       <tbody>
         <%for(let i =0; i<sensors.length;i++){ %>
           <tr>
-      
+
           <td><%=sensors[i].temp%>°c</td>
           <td><%=sensors[i].humid %>%</td>
           <td><%=sensors[i].moist1 %>%</td>
