@@ -35,7 +35,7 @@ const sensorsSchema = mongoose.Schema({
   temp1: Number,
   temp2: Number,
   temp3: Number,
-  date: String,
+  date: String
 
 });
 
