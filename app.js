@@ -6,9 +6,9 @@ const bodyParser = require("body-parser");
 const port = process.env.PORT || 3000;
 
 var app = express();
-// 
-// var date = new Date().getTime();
-// date += (2 * 60 * 60 * 1000);
+//
+var date = new Date().getTime();
+date += (2 * 60 * 60 * 1000);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -34,7 +34,8 @@ const sensorsSchema = mongoose.Schema({
   moist3: Number,
   temp1: Number,
   temp2: Number,
-  temp3: Number
+  temp3: Number,
+  date: String
 });
 
 
@@ -98,7 +99,8 @@ app.post("/mushroomData", function(req, res) {
     moist3: req.body.moistureThree,
     temp1: req.body.tempSensor1,
     temp2: req.body.tempSensor2,
-    temp3: req.body.tempSensor3
+    temp3: req.body.tempSensor3,
+    date: new Date(date).toUTCString()
 
   })
   sensor.save()
