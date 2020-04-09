@@ -34,7 +34,9 @@ const sensorsSchema = mongoose.Schema({
   moist3: Number,
   temp1: Number,
   temp2: Number,
-  temp3: Number
+  temp3: Number,
+  date: String,
+
 });
 
 
@@ -57,7 +59,7 @@ app.get("/values",function(req,res) {
         console.log(result.temp1);
           console.log(result.humid);
       res.render("values",{
-        temp: result.temp,
+        temp: result.temp1,
         humid: result.humid,
         moist1: result.moist1,
         moist2: result.moist2,
